@@ -3,6 +3,9 @@ layout: framework
 sidebar: category-list
 ---
 
+
+<div class="work-content">
+
 {%- if site.posts.size > 0 -%}
 
   {%- include functions.html func='log' level='debug' msg='Get value' -%}
@@ -14,3 +17,5 @@ sidebar: category-list
   {%- include views/segments.html -%}
 
 {%- endif -%}
+
+</div>
