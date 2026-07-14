@@ -37,10 +37,6 @@ $content-width: {{ site.content_width | default: '920px' }};
 
 @import "yat";
 
-.post-content {
-  font-size: 17px;
-  line-height: 1.7;
-}
 
 .post-center {
   text-align: center;

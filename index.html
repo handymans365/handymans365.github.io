@@ -2,7 +2,359 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: home
+layout: default
 title: 홈
-banner: "/assets/images/banners/main.jpg"
+<!-- banner: "/assets/images/banners/main.jpg" -->
 ---
+
+
+
+<link rel="stylesheet" href="{{ '/assets/css/home.scss' | relative_url }}">
+
+<div class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-bg">
+        <img src="{{ '/assets/images/banners/main.jpg' | relative_url }}" alt="">
+    </div>
+
+    <div class="hero-content">
+
+        <span class="hero-subtitle">
+            완벽한 안심 시공
+        </span>
+
+        <h1>
+            집수리의 새로운 기준
+            <br>
+            <span>집수리남</span>
+        </h1>
+
+        <p>
+            실내 · 외 시공<br>
+            방수 · 누수 · 외벽 · 지붕 · 리모델링
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/about.html" class="btn btn-primary">
+                견적 문의
+            </a>
+
+            <a href="/categories/" class="btn btn-secondary">
+                시공사례 보기
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+
+        <span></span>
+
+    </div>
+
+</div>
+
+
+
+<section class="services">
+
+    <div class="section-title">
+
+        <span>SERVICE</span>
+
+        <h2>
+            전문 시공 분야
+        </h2>
+
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+
+            <div class="icon">
+                🏠
+            </div>
+
+            <h3>옥상 방수</h3>
+
+            <p>
+                우레탄 · 시트 · 에폭시 방수
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+                🧱
+            </div>
+
+            <h3>외벽 보수</h3>
+
+            <p>
+                균열 보수 및 재도장
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+                🚿
+            </div>
+
+            <h3>누수 보수</h3>
+
+            <p>
+                원인 진단부터 완벽 시공
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+                🛠
+            </div>
+
+            <h3>실내 리모델링</h3>
+
+            <p>
+                상가 · 주택 · 사무실
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="about">
+
+    <div class="about-left">
+
+        <span>WHY US</span>
+
+        <h2>
+
+            풍부한
+            <br>
+            시공 경험
+
+        </h2>
+
+    </div>
+
+    <div class="about-right">
+
+        <div class="about-item">
+
+            ✔ 전문 시공팀 운영
+
+        </div>
+
+        <div class="about-item">
+
+            ✔ 정직한 견적
+
+        </div>
+
+        <div class="about-item">
+
+            ✔ 철저한 A/S
+
+        </div>
+
+        <div class="about-item">
+
+            ✔ 전국 시공
+
+        </div>
+
+        <div class="about-item">
+
+            ✔ 책임 시공
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="stats">
+
+    <div class="stat">
+
+        <h2 class="counter" data-target="2500">
+            0
+        </h2>
+
+        <p>시공 완료</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2 class="counter" data-target="98">
+            0
+        </h2>
+
+        <p>고객 만족도</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>
+            15년
+        </h2>
+
+        <p>시공 경력</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>
+            24H
+        </h2>
+
+        <p>상담 가능</p>
+
+    </div>
+
+</section>
+
+
+
+<section class="portfolio">
+
+    <div class="section-title">
+        <span>PORTFOLIO</span>
+        <h2>최근 시공 사례</h2>
+    </div>
+
+    <div class="portfolio-grid">
+
+        {% for post in site.posts limit:6 %}
+
+        <a href="{{ post.url | relative_url }}" class="portfolio-card">
+
+            <div class="thumb">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            </div>
+
+            <div class="info">
+
+                <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+
+                <h3>{{ post.title }}</h3>
+
+                <p>{{ post.categories }}</p>
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+<section class="process">
+
+    <div class="section-title">
+
+        <span>PROCESS</span>
+
+        <h2>
+
+            시공 절차
+
+        </h2>
+
+    </div>
+
+    <div class="process-line">
+
+        <div class="step">
+
+            <span>01</span>
+
+            상담
+
+        </div>
+
+        <div class="step">
+
+            <span>02</span>
+
+            방문
+
+        </div>
+
+        <div class="step">
+
+            <span>03</span>
+
+            견적
+
+        </div>
+
+        <div class="step">
+
+            <span>04</span>
+
+            시공
+
+        </div>
+
+        <div class="step">
+
+            <span>05</span>
+
+            A/S
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="cta">
+
+    <div class="cta-content">
+
+        <h2>
+
+            믿을 수 있는 시공,
+            <br>
+            집수리남이 함께합니다.
+
+        </h2>
+
+        <a href="/about.html" class="btn btn-primary">
+
+            견적 문의
+
+        </a>
+
+    </div>
+
+</section>
+
+<script src="{{ '/assets/js/home.js' | relative_url }}"></script>
