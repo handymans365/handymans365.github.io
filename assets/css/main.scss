@@ -37,6 +37,10 @@ $content-width: {{ site.content_width | default: '920px' }};
 
 @import "yat";
 
+.site-header {
+  display: none;
+}
+
 
 .post-center {
   text-align: center;
@@ -105,3 +109,5 @@ $content-width: {{ site.content_width | default: '920px' }};
 .post-right {
   text-align: right;
 }
+
+
