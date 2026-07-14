@@ -155,20 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
        Mouse Parallax
     ===================================== */
 
-    if(hero){
+    // if(hero){
 
-        hero.addEventListener("mousemove",(e)=>{
+    //     hero.addEventListener("mousemove",(e)=>{
 
-            const x=(e.clientX/window.innerWidth)-0.5;
+    //         const x=(e.clientX/window.innerWidth)-0.5;
 
-            const y=(e.clientY/window.innerHeight)-0.5;
+    //         const y=(e.clientY/window.innerHeight)-0.5;
 
-            heroContent.style.transform=
-            `translate(${x*25}px,${y*25}px)`;
+    //         heroContent.style.transform=
+    //         `translate(${x*25}px,${y*25}px)`;
 
-        });
+    //     });
 
-    }
+    // }
 
 
 

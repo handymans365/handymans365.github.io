@@ -866,18 +866,6 @@ html[data-scroll-status=down] .framework .sidebar {
 .page-segments li a:hover {
   color: #000;
 }
-.page-segments li a:after {
-  content: "NEW";
-  position: absolute;
-  margin-left: 8px;
-  margin-top: 3px;
-  padding: 0px 3px;
-  background-color: #ff5100;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  border-radius: 2px;
-}
 .page-segments li a:visited:after {
   background-color: #fff;
 }
@@ -1252,6 +1240,18 @@ html[data-theme=dark] .click-to-top {
   background: #34323D;
 }
 
+.site-header {
+  margin: 0;
+}
+
+.page-content {
+  padding-top: 0;
+}
+
+.work-content {
+  margin-top: 40px;
+}
+
 .post-center {
   text-align: center;
 }
@@ -1259,6 +1259,16 @@ html[data-theme=dark] .click-to-top {
 .post-center p {
   line-height: 1.8;
   margin: 18px 0;
+}
+
+.portfolio .hero-buttons {
+  margin-top: 60px;
+  text-align: center;
+  justify-content: center;
+}
+
+.portfolio .hero-buttons .btn {
+  display: inline-block;
 }
 
 .image-row {
