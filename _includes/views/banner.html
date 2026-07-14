@@ -104,7 +104,7 @@
         <img class="img-placeholder" src="{{ banner_image }}">
       {%- endif -%}
     </div>
-    <div class="wrapper">
+    <div class="banner-inner">
       <div class="page-banner-inner">
 
         {%- if banner_html -%}
@@ -129,3 +129,13 @@
   </section>
 {%- endif -%}
 
+
+.banner-inner {
+  width: 100%;
+}
+
+.banner-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
