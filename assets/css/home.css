@@ -232,6 +232,9 @@ font-weight:700;
 
 transition:.45s;
 
+border:5px solid transparent;
+
+box-sizing:border-box;
 }
 
 .btn-primary{
@@ -254,22 +257,47 @@ box-shadow:
 
 .btn-secondary{
 
-border:1px solid rgba(255,255,255,.4);
+background:var(--white);
 
-color:#fff;
-
-backdrop-filter:blur(10px);
+color:var(--black);
 
 }
 
 .btn-secondary:hover{
 
-background:#fff;
+transform:translateY(-6px);
 
-color:#000;
+box-shadow:
+
+0 20px 50px rgba(255, 255, 255, 0.4);
 
 }
 
+
+
+.btn-blog{
+
+box-sizing: border-box;
+
+border:5px solid rgb(133, 255, 141);
+
+color:#000000;
+
+backdrop-filter:blur(10px);
+
+}
+
+.btn-blog:hover{
+
+background:rgb(133, 255, 141);
+
+transform:translateY(-6px);
+
+box-shadow:
+
+0 20px 50px rgba(133, 255, 141, 0.4);
+
+}
 
 
 /* Shine */
@@ -902,6 +930,8 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:repeat(2,1fr);
 
 }
+
+
 
 .stats{
 

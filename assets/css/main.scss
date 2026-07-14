@@ -38,7 +38,17 @@ $content-width: {{ site.content_width | default: '920px' }};
 @import "yat";
 
 .site-header {
-  display: none;
+  margin: 0;
+}
+
+
+.page-content {
+  padding-top: 0;
+}
+
+
+.work-content {
+  margin-top: 40px;
 }
 
 
@@ -50,6 +60,20 @@ $content-width: {{ site.content_width | default: '920px' }};
   line-height: 1.8;
   margin: 18px 0;
 }
+
+
+.portfolio .hero-buttons {
+  margin-top: 60px;
+  text-align: center;
+  justify-content: center;
+}
+
+
+.portfolio .hero-buttons .btn {
+  display: inline-block;
+}
+
+
 
 .image-row {
   display: flex;
