@@ -24,7 +24,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 완벽한 수리/복원 | 집수리남
+title: 완벽한 수리/복원
 email: handymans365.kr@gmail.com
 
 # Copyright setting
