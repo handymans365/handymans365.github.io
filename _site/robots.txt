@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
+
 Sitemap: http://www.집수리남.com/sitemap.xml
