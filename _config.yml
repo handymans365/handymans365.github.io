@@ -182,7 +182,7 @@ defaults:
       path: "_posts"
       type: posts
     values:
-      permalink: /works/:year-:month-:day-:title
+      permalink: /works/:categories/:year-:month-:day-:title
 
       
 # Build settings
