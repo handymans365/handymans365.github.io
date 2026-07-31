@@ -176,6 +176,15 @@ header_pages:
 #   theme: "github-light"
 #   follow_site_theme: true
 
+
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      permalink: /works/:year-:month-:day-:title
+
+      
 # Build settings
 # highlighter: none
 markdown: kramdown
