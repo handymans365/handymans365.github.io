@@ -19,4 +19,7 @@
   {%- include extensions/code-highlight.html -%}
   {%- include extensions/photo-swipe.html -%}
   {%- include custom-head.html -%}
+  {% if page.noindex %}
+    <meta name="robots" content="noindex">
+  {% endif %}
 </head>
