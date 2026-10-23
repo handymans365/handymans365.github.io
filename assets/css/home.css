@@ -1169,6 +1169,8 @@ transform:translateY(30px);
 .hero-content {
     background: rgba(255, 255, 255, 0.45);
     padding: 36px 44px;
+    margin-left: 8%;
+    margin-right: auto;
     border-radius: 20px;
     width: fit-content;
     max-width: calc(100% - 40px);
