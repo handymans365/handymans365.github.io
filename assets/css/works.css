@@ -1,0 +1,152 @@
+
+/* =========================================
+   WORKS GALLERY
+========================================= */
+
+.work-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.works-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 24px;
+}
+
+.work-card {
+    display: block;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.work-card[hidden] {
+    display: none !important;
+}
+
+.work-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f3f3f3;
+}
+
+.work-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.work-card:hover .work-image img {
+    transform: scale(1.04);
+}
+
+.work-title {
+    margin: 12px 0 4px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.work-date {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* 페이지네이션 */
+
+.works-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 40px 0 20px;
+}
+
+.page-button {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.page-button:hover:not(:disabled) {
+    border-color: #5c6cf5;
+    background: #f0f1ff;
+}
+
+.page-button.active {
+    border-color: #5c6cf5;
+    background: #5c6cf5;
+    color: #fff;
+    font-weight: 700;
+}
+
+.page-button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* 태블릿 */
+
+@media (max-width: 900px) {
+    .works-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 18px;
+    }
+}
+
+/* 모바일 */
+
+@media (max-width: 520px) {
+    .work-content {
+        padding: 16px;
+    }
+
+    .works-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 12px;
+    }
+
+    .work-image {
+        border-radius: 7px;
+    }
+
+    .work-title {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .work-date {
+        font-size: 11px;
+    }
+
+    .works-pagination {
+        gap: 5px;
+        margin-top: 30px;
+    }
+
+    .page-button {
+        min-width: 34px;
+        height: 34px;
+        padding: 0 9px;
+        font-size: 13px;
+    }
+}

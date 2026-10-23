@@ -1,21 +1,123 @@
+
 ---
 layout: framework
-sidebar: category-list
+sidebar: false
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/works.css' | relative_url }}">
 
 <div class="work-content">
 
-{%- if site.posts.size > 0 -%}
+  <div class="works-gallery">
 
-  {%- include functions.html func='log' level='debug' msg='Get value' -%}
-  {%- include functions.html func='get_categories' -%}
-  {% assign categories = return %}
+    {% assign works = site.posts %}
 
-  {% assign keys = categories %}
-  {% assign field = 'categories' %}
-  {%- include views/segments.html -%}
+    {% for post in works %}
 
-{%- endif -%}
+      <a href="{{ post.url | relative_url }}" class="work-card">
+
+        <div class="work-image">
+          {% if post.image %}
+            <img
+              src="{{ post.image | relative_url }}"
+              alt="{{ post.title }}"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+
+        <h2 class="work-title">
+          {{ post.title }}
+        </h2>
+
+        <time class="work-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {{ post.date | date: "%Y.%m.%d" }}
+        </time>
+
+      </a>
+
+    {% endfor %}
+
+  </div>
+
+  <!-- 페이지네이션 -->
+  <nav class="works-pagination" aria-label="시공 사례 페이지"></nav>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const gallery = document.querySelector('.works-gallery');
+    const pagination = document.querySelector('.works-pagination');
+
+    if (!gallery || !pagination) return;
+
+    const cards = Array.from(gallery.querySelectorAll('.work-card'));
+    const perPage = 12;
+    const totalPages = Math.ceil(cards.length / perPage);
+
+    if (totalPages <= 1) {
+        pagination.style.display = 'none';
+        return;
+    }
+
+    let currentPage = 1;
+
+    function renderPage(page) {
+        currentPage = page;
+
+        cards.forEach(function (card, index) {
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+
+            card.hidden = !(index >= start && index < end);
+        });
+
+        pagination.replaceChildren();
+
+        function addButton(label, pageNumber, options = {}) {
+            const button = document.createElement('button');
+
+            button.type = 'button';
+            button.textContent = label;
+            button.className = 'page-button';
+
+            if (options.active) {
+                button.classList.add('active');
+                button.setAttribute('aria-current', 'page');
+            }
+
+            if (options.disabled) {
+                button.disabled = true;
+            }
+
+            button.addEventListener('click', function () {
+                renderPage(pageNumber);
+
+                gallery.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+
+            pagination.appendChild(button);
+        }
+
+        addButton('이전', Math.max(1, page - 1), {
+            disabled: page === 1
+        });
+
+        for (let i = 1; i <= totalPages; i++) {
+            addButton(String(i), i, {
+                active: i === page
+            });
+        }
+
+        addButton('다음', Math.min(totalPages, page + 1), {
+            disabled: page === totalPages
+        });
+    }
+
+    renderPage(1);
+});
+</script>
