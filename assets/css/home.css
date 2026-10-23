@@ -1167,7 +1167,7 @@ transform:translateY(30px);
 
 /* HERO 텍스트 뒤 반투명 화이트 패널 */
 .hero-content {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.45);
     padding: 36px 44px;
     border-radius: 20px;
     width: fit-content;
@@ -1188,7 +1188,7 @@ transform:translateY(30px);
 
 /* 업체명은 기존 노란색 포인트 컬러 유지 */
 .hero-content h1 span {
-    color: inherit;
+    color: #5c6cf5;
 }
 
 /* 버튼은 기존 테마 스타일 유지 */
