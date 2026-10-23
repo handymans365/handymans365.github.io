@@ -371,3 +371,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+
+
+/* ==================================================
+   HERO IMAGE SLIDER
+   5초 간격 자동 페이드 전환
+================================================== */
+
+document.addEventListener('DOMContentLoaded', function () {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const slides = hero.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const interval = 5000;
+
+    // 첫 번째 이미지부터 표시
+    slides.forEach(function (slide, index) {
+        slide.classList.toggle('active', index === 0);
+    });
+
+    // 이미지 자동 전환
+    window.setInterval(function () {
+        slides[currentIndex].classList.remove('active');
+
+        currentIndex = (currentIndex + 1) % slides.length;
+
+        slides[currentIndex].classList.add('active');
+    }, interval);
+});
