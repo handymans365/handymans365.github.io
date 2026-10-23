@@ -1162,3 +1162,45 @@ transform:translateY(30px);
         transition: none;
     }
 }
+
+
+
+/* HERO 텍스트 뒤 반투명 화이트 패널 */
+.hero-content {
+    background: rgba(255, 255, 255, 0.82);
+    padding: 36px 44px;
+    border-radius: 20px;
+    width: fit-content;
+    max-width: calc(100% - 40px);
+    margin-inline: auto;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* 흰색 패널 위에서 글씨가 잘 보이도록 */
+.hero-content,
+.hero-content h1,
+.hero-content p,
+.hero-content .hero-subtitle {
+    color: #292929;
+}
+
+/* 업체명은 기존 노란색 포인트 컬러 유지 */
+.hero-content h1 span {
+    color: inherit;
+}
+
+/* 버튼은 기존 테마 스타일 유지 */
+.hero-content .hero-buttons {
+    position: relative;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 26px 22px;
+        border-radius: 16px;
+        max-width: calc(100% - 32px);
+    }
+}
