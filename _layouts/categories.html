@@ -1,21 +1,15 @@
-
 ---
-layout: framework
+layout: default
 sidebar: false
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/works.css' | relative_url }}">
 
 <div class="work-content">
-
   <div class="works-gallery">
-
     {% assign works = site.posts %}
-
     {% for post in works %}
-
       <a href="{{ post.url | relative_url }}" class="work-card">
-
         <div class="work-image">
           {% if post.image %}
             <img
@@ -26,98 +20,127 @@ sidebar: false
           {% endif %}
         </div>
 
-        <h2 class="work-title">
-          {{ post.title }}
-        </h2>
+        <h2 class="work-title">{{ post.title }}</h2>
 
-        <time class="work-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+        <time
+          class="work-date"
+          datetime="{{ post.date | date: '%Y-%m-%d' }}"
+        >
           {{ post.date | date: "%Y.%m.%d" }}
         </time>
-
       </a>
-
     {% endfor %}
-
   </div>
 
-  <!-- 페이지네이션 -->
-  <nav class="works-pagination" aria-label="시공 사례 페이지"></nav>
-
+  <nav
+    class="works-pagination"
+    aria-label="시공 사례 페이지"
+  ></nav>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const gallery = document.querySelector('.works-gallery');
-    const pagination = document.querySelector('.works-pagination');
+  const gallery = document.querySelector('.works-gallery');
+  const pagination = document.querySelector('.works-pagination');
 
-    if (!gallery || !pagination) return;
+  if (!gallery || !pagination) return;
 
-    const cards = Array.from(gallery.querySelectorAll('.work-card'));
-    const perPage = 12;
-    const totalPages = Math.ceil(cards.length / perPage);
+  const cards = Array.from(gallery.querySelectorAll('.work-card'));
+  const perPage = 12;
+  const groupSize = 10;
+  const totalPages = Math.ceil(cards.length / perPage);
+
+  function getPageFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const page = parseInt(params.get('page') || '1', 10);
+
+    return Number.isFinite(page)
+      ? Math.min(Math.max(page, 1), Math.max(totalPages, 1))
+      : 1;
+  }
+
+  function renderPage(page, updateURL = false) {
+    if (totalPages === 0) {
+      pagination.style.display = 'none';
+      return;
+    }
+
+    page = Math.min(Math.max(page, 1), totalPages);
+
+    cards.forEach(function (card, index) {
+      card.hidden = index < (page - 1) * perPage ||
+                    index >= page * perPage;
+    });
+
+    if (updateURL) {
+      const url = new URL(window.location.href);
+
+      if (page === 1) {
+        url.searchParams.delete('page');
+      } else {
+        url.searchParams.set('page', page);
+      }
+
+      window.history.pushState({ page: page }, '', url);
+    }
+
+    pagination.replaceChildren();
 
     if (totalPages <= 1) {
-        pagination.style.display = 'none';
-        return;
+      pagination.style.display = 'none';
+      return;
     }
 
-    let currentPage = 1;
+    pagination.style.display = 'flex';
 
-    function renderPage(page) {
-        currentPage = page;
+    const groupStart =
+      Math.floor((page - 1) / groupSize) * groupSize + 1;
+    const groupEnd = Math.min(groupStart + groupSize - 1, totalPages);
 
-        cards.forEach(function (card, index) {
-            const start = (page - 1) * perPage;
-            const end = start + perPage;
+    function addButton(label, targetPage, options = {}) {
+      const button = document.createElement('button');
 
-            card.hidden = !(index >= start && index < end);
+      button.type = 'button';
+      button.textContent = label;
+      button.className = 'page-button';
+
+      if (options.active) {
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'page');
+      }
+
+      button.disabled = Boolean(options.disabled);
+
+      button.addEventListener('click', function () {
+        renderPage(targetPage, true);
+        gallery.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
+      });
 
-        pagination.replaceChildren();
-
-        function addButton(label, pageNumber, options = {}) {
-            const button = document.createElement('button');
-
-            button.type = 'button';
-            button.textContent = label;
-            button.className = 'page-button';
-
-            if (options.active) {
-                button.classList.add('active');
-                button.setAttribute('aria-current', 'page');
-            }
-
-            if (options.disabled) {
-                button.disabled = true;
-            }
-
-            button.addEventListener('click', function () {
-                renderPage(pageNumber);
-
-                gallery.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-
-            pagination.appendChild(button);
-        }
-
-        addButton('이전', Math.max(1, page - 1), {
-            disabled: page === 1
-        });
-
-        for (let i = 1; i <= totalPages; i++) {
-            addButton(String(i), i, {
-                active: i === page
-            });
-        }
-
-        addButton('다음', Math.min(totalPages, page + 1), {
-            disabled: page === totalPages
-        });
+      pagination.appendChild(button);
     }
 
-    renderPage(1);
+    addButton('이전', groupStart - 1, {
+      disabled: groupStart === 1
+    });
+
+    for (let i = groupStart; i <= groupEnd; i++) {
+      addButton(String(i), i, {
+        active: i === page
+      });
+    }
+
+    addButton('다음', groupEnd + 1, {
+      disabled: groupEnd >= totalPages
+    });
+  }
+
+  window.addEventListener('popstate', function () {
+    renderPage(getPageFromURL());
+  });
+
+  renderPage(getPageFromURL());
 });
 </script>
