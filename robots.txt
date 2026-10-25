@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /tags
-Disallow: /archives
+Disallow: /tags.html
+Disallow: /archives.html
 
 Sitemap: https://집수리남.com/sitemap.xml
