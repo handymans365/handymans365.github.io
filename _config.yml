@@ -122,7 +122,6 @@ header_pages:
   - index.html
   - categories.html
   - about.html
-  - tags.html
 
 # Page default value
 # defaults:
